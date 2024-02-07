@@ -102,7 +102,7 @@ public class SandersZelda {
 
     private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 
-    public Zelda() {
+    public SandersZelda() {
         setup();
     }
 
@@ -605,14 +605,14 @@ public class SandersZelda {
             while (endgame == false) {
                 // check player against doors in given scenes
                 if (backgroundState.substring(0, 6).equals("KI0511")) {
-                    if (Zelda.GameLevel.collisionOccurs(p1, doorKItoTC)) {
+                    if (SandersZelda.GameLevel.collisionOccurs(p1, doorKItoTC)) {
                         p1.moveto(p1originalX, p1originalY);
                         backgroundState = "TC0305";
                         clip.stop();
                         playAudio(backgroundState);
                     }
                 } else if (backgroundState.substring(0, 6).equals("TC0305")) {
-                    if (Zelda.GameLevel.collisionOccurs(p1, doorTCtoKI)) {
+                    if (SandersZelda.GameLevel.collisionOccurs(p1, doorTCtoKI)) {
                         p1.moveto(p1originalX, p1originalY);
                         backgroundState = "KI0511";
                         clip.stop();
@@ -630,7 +630,7 @@ public class SandersZelda {
 
                 // check player against enemies
                 for (int i = 0; i < bluepigEnemies.size(); i++) {
-                    if (Zelda.GameLevel.collisionOccurs(p1, bluepigEnemies.elementAt(i))) {
+                    if (SandersZelda.GameLevel.collisionOccurs(p1, bluepigEnemies.elementAt(i))) {
                         // System.out.println("Still Colliding: " + i + ", " + System.currentTimeMllis());
                         p1.setBounce(true);
                         bluepigEnemies.elementAt(i).setBounce(true);
@@ -650,11 +650,11 @@ public class SandersZelda {
         // pg 126
         private static void checkMoversAgainstWalls(Vector<ImageObject> wallsInput) {
             for (int i = 0; i < wallsInput.size(); i++) {
-                if (Zelda.GameLevel.collisionOccurs(p1, wallsInput.elementAt(i))) {
+                if (SandersZelda.GameLevel.collisionOccurs(p1, wallsInput.elementAt(i))) {
                     p1.setBounce(true);
                 }
                 for (int j = 0; j < bluepigEnemies.size(); j++) {
-                    if (Zelda.GameLevel.collisionOccurs(bluepigEnemies.elementAt(j), wallsInput.elementAt(i))) {
+                    if (SandersZelda.GameLevel.collisionOccurs(bluepigEnemies.elementAt(j), wallsInput.elementAt(i))) {
                         bluepigEnemies.elementAt(j).setBounce(true);
                     }
                 }
