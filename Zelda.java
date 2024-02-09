@@ -147,17 +147,17 @@ public class Zelda {
             }
 
             // C- tried to get the images into the background vector
-            backgroundKI.elementAt(0).set(0, ImageIO.read(new File("ZeldaNewResOWA1.png")));
-            backgroundKI.elementAt(0).set(1, ImageIO.read(new File("ZeldaNewResOWA2.png")));
-            backgroundKI.elementAt(0).set(2, ImageIO.read(new File("ZeldaNewResOWA3.png")));
-            backgroundKI.elementAt(1).set(0, ImageIO.read(new File("ZeldaNewResOWB1.png")));
-            backgroundKI.elementAt(1).set(1, ImageIO.read(new File("ZeldaNewResOWB2.png")));
+            backgroundKI.elementAt(0).set(0, ImageIO.read(new File("Overworld_A1.png")));
+            backgroundKI.elementAt(0).set(1, ImageIO.read(new File("Overworld_A2.png")));
+            backgroundKI.elementAt(0).set(2, ImageIO.read(new File("Overworld_A3.png")));
+            backgroundKI.elementAt(1).set(0, ImageIO.read(new File("Overworld_B1.png")));
+            backgroundKI.elementAt(1).set(1, ImageIO.read(new File("Overworld_B2.png")));
             for (int i = 0; i < backgroundKI.size(); i++) {
                 for (int j = 0; j < backgroundKI.elementAt(i).size(); j++) {
                     // TODO: swap j and i -> do I really need to do this??
                     if ( (j == 5 && i == 10) || (j == 5 && i == 11) || (j == 6 && i == 10) || (j == 6 && i == 11)
                             || (j == 7 && i == 10) || (j == 7 && i == 11) || (j == 8 && i == 9) || (j == 7 && i == 10)) {
-                        String filename = "ZeldaNewResOW";
+                        String filename = "Overworld_";
                         if (j < 10) {
                             filename = filename + "0";
                         }
@@ -167,11 +167,13 @@ public class Zelda {
                         }
                         filename = filename + i + ".png";
 //                        System.out.println(filename);
-//                        backgroundKI.elementAt(i).set(j, ImageIO.read(new File("ZeldaNewResOWA1")));
-//                        backgroundKI.elementAt(i).set(j, ImageIO.read(new File("ZeldaNewResOWA2")));
-//                        backgroundKI.elementAt(i).set(j, ImageIO.read(new File("ZeldaNewResOWA3")));
-//                        backgroundKI.elementAt(i).set(j, ImageIO.read(new File("ZeldaNewResOWB1")));
-//                        backgroundKI.elementAt(i).set(j, ImageIO.read(new File("ZeldaNewResOWB2")));
+//                        backgroundKI.elementAt(0).set(0, ImageIO.read(new File(filename)));
+
+//                        backgroundKI.elementAt(0).set(0, ImageIO.read(new File("Overworld_A1.png")));
+//                        backgroundKI.elementAt(0).set(1, ImageIO.read(new File("Overworld_A2.png")));
+//                        backgroundKI.elementAt(0).set(2, ImageIO.read(new File("Overworld_A3.png")));
+//                        backgroundKI.elementAt(1).set(0, ImageIO.read(new File("Overworld_B1.png")));
+//                        backgroundKI.elementAt(1).set(1, ImageIO.read(new File("Overworld_B2.png")));
                     }
                 }
             }
