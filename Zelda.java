@@ -33,7 +33,7 @@ public class Zelda {
     // global variables for the game
     private static Boolean endgame;
 
-    private static Vector<Vector<BufferedImage>> backgroundKI;
+    private static BufferedImage[][] backgroundKI;
     private static Vector<Vector<BufferedImage>> backgroundTC;
 
     private static Vector<Vector<Vector<ImageObject>>> wallsKI;
@@ -127,56 +127,22 @@ public class Zelda {
         p1originalX = (double)XOFFSET + ((double) WINWIDTH / 2.0) - (p1width / 2.0);
         p1originalY = (double)YOFFSET + ((double)WINHEIGHT / 2.0) - (p1height / 2.0);
         level = 3;
-        audiolifetime = Long.valueOf(78000); // 78 seconds for KI.WAV, was new Long(78000)
-        dropLifeLifetime = Long.valueOf(1000); // 1 second
+        audiolifetime = 78000L; // 78 seconds for KI.WAV, was new Long(78000)
+        dropLifeLifetime = 1000L; // 1 second
 
         try {
             // setting up the Koholint Island images
-            xdimKI = 16;
-            ydimKI = 16;
+            xdimKI = 3;
+            ydimKI = 2;
             // this 2D vector keeps all the diff images of KI
-            backgroundKI = new Vector<Vector<BufferedImage>>();
 
-            for (int i = 0; i < ydimKI; i++) {
-                Vector<BufferedImage> temp = new Vector<BufferedImage>();
-                for (int j = 0; j < xdimKI; j++) {
-                    BufferedImage tempImg = ImageIO.read(new File("blank.png"));
-                    temp.addElement(tempImg);
-                }
-                backgroundKI.addElement(temp);
-            }
-
-            // C- tried to get the images into the background vector
-            backgroundKI.elementAt(0).set(0, ImageIO.read(new File("Overworld_A1.png")));
-            backgroundKI.elementAt(0).set(1, ImageIO.read(new File("Overworld_A2.png")));
-            backgroundKI.elementAt(0).set(2, ImageIO.read(new File("Overworld_A3.png")));
-            backgroundKI.elementAt(1).set(0, ImageIO.read(new File("Overworld_B1.png")));
-            backgroundKI.elementAt(1).set(1, ImageIO.read(new File("Overworld_B2.png")));
-            for (int i = 0; i < backgroundKI.size(); i++) {
-                for (int j = 0; j < backgroundKI.elementAt(i).size(); j++) {
-                    // TODO: swap j and i -> do I really need to do this??
-                    if ( (j == 5 && i == 10) || (j == 5 && i == 11) || (j == 6 && i == 10) || (j == 6 && i == 11)
-                            || (j == 7 && i == 10) || (j == 7 && i == 11) || (j == 8 && i == 9) || (j == 7 && i == 10)) {
-                        String filename = "Overworld_";
-                        if (j < 10) {
-                            filename = filename + "0";
-                        }
-                        filename = filename + j;
-                        if (i < 10) {
-                            filename = filename + "0";
-                        }
-                        filename = filename + i + ".png";
-//                        System.out.println(filename);
-//                        backgroundKI.elementAt(0).set(0, ImageIO.read(new File(filename)));
-
-//                        backgroundKI.elementAt(0).set(0, ImageIO.read(new File("Overworld_A1.png")));
-//                        backgroundKI.elementAt(0).set(1, ImageIO.read(new File("Overworld_A2.png")));
-//                        backgroundKI.elementAt(0).set(2, ImageIO.read(new File("Overworld_A3.png")));
-//                        backgroundKI.elementAt(1).set(0, ImageIO.read(new File("Overworld_B1.png")));
-//                        backgroundKI.elementAt(1).set(1, ImageIO.read(new File("Overworld_B2.png")));
-                    }
-                }
-            }
+            backgroundKI = new BufferedImage[xdimKI][ydimKI];
+            backgroundKI[0][0] = ImageIO.read(new File("KI0000.png"));
+            backgroundKI[1][0] = ImageIO.read(new File("KI0100.png"));
+            backgroundKI[2][0] = ImageIO.read(new File("KI0200.png"));
+            backgroundKI[0][1] = ImageIO.read(new File("KI0001.png"));
+            backgroundKI[1][1] = ImageIO.read(new File("KI0101.png"));
+            backgroundKI[2][1] = ImageIO.read(new File("KI0201.png"));
 
             // setting up the Koholint Island walls and their collisions
             wallsKI = new Vector<Vector<Vector<ImageObject>>>(); // diff version of ImageObj than Asteroids
@@ -720,9 +686,9 @@ public class Zelda {
         if (backgroundState.substring(0, 2).equals("KI")) {
             int i = Integer.parseInt(backgroundState.substring(4, 6));
             int j = Integer.parseInt(backgroundState.substring(2, 4));
-            if (i < backgroundKI.size()) {
-                if (j < backgroundKI.elementAt(i).size()) {
-                    g2D.drawImage(backgroundKI.elementAt(i).elementAt(j), XOFFSET, YOFFSET, null);
+            if (i < 3) {
+                if (j < 2) {
+                    g2D.drawImage(backgroundKI[i][j], XOFFSET, YOFFSET, null);
                 }
             }
         }
@@ -972,7 +938,7 @@ public class Zelda {
             aPressed = false;
             xPressed = false;
             lastPressed = 90.0;
-            backgroundState = "ZeldaNewResOWA1";
+            backgroundState = "KI0000";
             availableToDropLife = true;
 
             try {
