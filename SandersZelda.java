@@ -1341,6 +1341,14 @@ public class SandersZelda {
         bindKey(myPanel, "RIGHT");
         bindKey(myPanel, "F");
 
+        JButton quitButton = new JButton("Quit");
+        quitButton.addActionListener(new QuitGame());
+        myPanel.add(quitButton);
+
+        JButton newGameButton = new JButton("Start");
+        newGameButton.addActionListener(new StartGame());
+        myPanel.add(newGameButton);
+
         appFrame.getContentPane().add(myPanel, "South");
         appFrame.setVisible(true);
     }
