@@ -137,12 +137,12 @@ public class Zelda {
             // this 2D vector keeps all the diff images of KI
 
             backgroundKI = new BufferedImage[xdimKI][ydimKI];
-            backgroundKI[0][0] = ImageIO.read(new File("KI0000.png"));
-            backgroundKI[1][0] = ImageIO.read(new File("KI0100.png"));
-            backgroundKI[2][0] = ImageIO.read(new File("KI0200.png"));
-            backgroundKI[0][1] = ImageIO.read(new File("KI0001.png"));
-            backgroundKI[1][1] = ImageIO.read(new File("KI0101.png"));
-            backgroundKI[2][1] = ImageIO.read(new File("KI0201.png"));
+            backgroundKI[0][0] = ImageIO.read(new File("images/KI0000.png"));
+            backgroundKI[1][0] = ImageIO.read(new File("images/KI0100.png"));
+            backgroundKI[2][0] = ImageIO.read(new File("images/KI0200.png"));
+            backgroundKI[0][1] = ImageIO.read(new File("images/KI0001.png"));
+            backgroundKI[1][1] = ImageIO.read(new File("images/KI0101.png"));
+            backgroundKI[2][1] = ImageIO.read(new File("images/KI0201.png"));
 
             // setting up the Koholint Island walls and their collisions
             wallsKI = new Vector<Vector<Vector<ImageObject>>>(); // diff version of ImageObj than Asteroids
@@ -265,7 +265,9 @@ public class Zelda {
             leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
             rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
 
-        } catch (IOException ioe) { }
+        } catch (IOException ioe) {
+            System.out.println("Error: " + ioe.getMessage());
+        }
 
     }
 
