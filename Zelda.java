@@ -307,19 +307,19 @@ public class Zelda {
 
         try {
             if (backgroundState.substring(0, 2).equals("KI")) {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("KI.wav").getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("images\\KI.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
                 audiolifetime = Long.valueOf(78000); // was new Long(78000)
             } else if (backgroundState.substring(0, 2).equals("TC")) {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("TC.wav").getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("images\\TC.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
-                audiolifetime = Long.valueOf(191000); // was new Long(191000)
+                audiolifetime = Long.valueOf(219000); // was new Long(191000)
             }
         } catch (Exception e) {
             // NOP
