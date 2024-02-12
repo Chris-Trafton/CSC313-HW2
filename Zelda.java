@@ -247,23 +247,23 @@ public class Zelda {
             // BluePig Enemy's images
             bluepigEnemies = new Vector<ImageObject>();
             bluepigEnemy = new Vector<BufferedImage>();
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Up_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("BPB2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Down_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Down_2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Left_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Left_2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Right_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("Pig_Right_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Up_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Up_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Down_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Down_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Left_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Left_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Right_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Right_2.png")));
 
             // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
 
             // Health images
-            leftHeartOutline = ImageIO.read(new File("heartOutlineLeft.png"));
-            rightHeartOutline = ImageIO.read(new File("heartOutlineRight.png"));
-            leftHeart = ImageIO.read(new File("Heart_Left.png"));
-            rightHeart = ImageIO.read(new File("Heart_Right.png"));
+            leftHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Left.png"));
+            rightHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Right.png"));
+            leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
+            rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
 
         } catch (IOException ioe) { }
 
