@@ -110,7 +110,7 @@ public class Zelda {
     public static void setup() {
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
         XOFFSET = 0;
-        YOFFSET = 40;
+        YOFFSET = 30;
         WINWIDTH = 338;
         WINHEIGHT = 271;
         pi = 3.1459265358979;
