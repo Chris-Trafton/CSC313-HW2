@@ -110,7 +110,7 @@ public class Zelda {
     public static void setup() {
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
         XOFFSET = 0;
-        YOFFSET = 40;
+        YOFFSET = 31;
         WINWIDTH = 338;
         WINHEIGHT = 271;
         pi = 3.1459265358979;
@@ -247,14 +247,15 @@ public class Zelda {
             // BluePig Enemy's images
             bluepigEnemies = new Vector<ImageObject>();
             bluepigEnemy = new Vector<BufferedImage>();
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Up_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Up_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Down_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Down_2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Left_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Left_2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Right_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Right_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Up_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Up_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Down_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Down_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Left_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Left_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Right_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Right_2.png")));
+            bluepigEnemies.add(new ImageObject(0, 0, 0, 0, 0));
 
             // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
@@ -1332,6 +1333,4 @@ public class Zelda {
         appFrame.getContentPane().add(myPanel, "South");
         appFrame.setVisible(true);
     }
-
-
 }
