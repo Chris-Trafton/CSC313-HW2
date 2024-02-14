@@ -110,7 +110,7 @@ public class Zelda {
     public static void setup() {
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
         XOFFSET = 0;
-        YOFFSET = 31;
+        YOFFSET = 40;
         WINWIDTH = 338;
         WINHEIGHT = 271;
         pi = 3.1459265358979;
@@ -137,12 +137,12 @@ public class Zelda {
             // this 2D vector keeps all the diff images of KI
 
             backgroundKI = new BufferedImage[xdimKI][ydimKI];
-            backgroundKI[0][0] = ImageIO.read(new File("images/KI0000.png"));
-            backgroundKI[1][0] = ImageIO.read(new File("images/KI0100.png"));
-            backgroundKI[2][0] = ImageIO.read(new File("images/KI0200.png"));
-            backgroundKI[0][1] = ImageIO.read(new File("images/KI0001.png"));
-            backgroundKI[1][1] = ImageIO.read(new File("images/KI0101.png"));
-            backgroundKI[2][1] = ImageIO.read(new File("images/KI0201.png"));
+            backgroundKI[0][0] = ImageIO.read(new File("images\\KI0000.png"));
+            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0100.png"));
+            backgroundKI[2][0] = ImageIO.read(new File("images\\KI0200.png"));
+            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0001.png"));
+            backgroundKI[1][1] = ImageIO.read(new File("images\\KI0101.png"));
+//            backgroundKI[2][1] = ImageIO.read(new File("KI0201.png"));
 
             // setting up the Koholint Island walls and their collisions
             wallsKI = new Vector<Vector<Vector<ImageObject>>>(); // diff version of ImageObj than Asteroids
@@ -204,7 +204,7 @@ public class Zelda {
                             (j == 3 && i == 5) || (j == 4 && i == 2) || (j == 4 && i == 3) || (j == 4 && i == 4) ||
                             (j == 5 && i == 2) || (j == 5 && i == 3) || (j == 6 && i == 0) || (j == 6 && i == 1) ||
                             (j == 6 && i == 2) || (j == 6 && i == 3)) {
-                        String filename = "TC";
+                        String filename = "images\\TC";
                         if (j < 10) {
                             filename = filename + "0";
                         }
@@ -247,15 +247,14 @@ public class Zelda {
             // BluePig Enemy's images
             bluepigEnemies = new Vector<ImageObject>();
             bluepigEnemy = new Vector<BufferedImage>();
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Up_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Up_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Down_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Down_2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Left_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Left_2.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Right_1.png")));
-            bluepigEnemy.addElement(ImageIO.read(new File("images/Pig_Right_2.png")));
-            bluepigEnemies.add(new ImageObject(0, 0, 0, 0, 0));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Up_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Up_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Down_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Down_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Left_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Left_2.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Right_1.png")));
+            bluepigEnemy.addElement(ImageIO.read(new File("images\\Pig_Right_2.png")));
 
             // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
@@ -266,9 +265,7 @@ public class Zelda {
             leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
             rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
 
-        } catch (IOException ioe) {
-            System.out.println("Error: " + ioe.getMessage());
-        }
+        } catch (IOException ioe) { }
 
     }
 
@@ -1333,4 +1330,6 @@ public class Zelda {
         appFrame.getContentPane().add(myPanel, "South");
         appFrame.setVisible(true);
     }
+
+
 }
