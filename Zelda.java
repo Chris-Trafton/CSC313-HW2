@@ -307,14 +307,14 @@ public class Zelda {
 
         try {
             if (backgroundState.substring(0, 2).equals("KI")) {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("images\\KI.wav").getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("audio\\KI.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
                 audiolifetime = Long.valueOf(78000); // was new Long(78000)
             } else if (backgroundState.substring(0, 2).equals("TC")) {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("images\\TC.wav").getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("audio\\TC.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
@@ -1312,6 +1312,14 @@ public class Zelda {
          levelMenu.addActionListener(new GameLevel());
          myPanel.add(levelMenu);
          */
+
+        JButton quitButton = new JButton("Select");
+        quitButton.addActionListener(new QuitGame());
+        myPanel.add(quitButton);
+
+        JButton newGameButton = new JButton("Start");
+        newGameButton.addActionListener(new StartGame());
+        myPanel.add(newGameButton);
 
         bindKey(myPanel, "UP");
         bindKey(myPanel, "DOWN");
