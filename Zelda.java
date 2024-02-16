@@ -236,10 +236,10 @@ public class Zelda {
             bubblebossEnemies = new Vector<ImageObject>();
 
             // Health images
-            // leftHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Left.png"));
-            // rightHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Right.png"));
-            // leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
-            // rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
+//             leftHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Left.png"));
+//             rightHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Right.png"));
+//             leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
+//             rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
             leftHeartOutline = ImageIO.read(new File("images\\Small_Heart_LeftHalf.png"));
             rightHeartOutline = ImageIO.read(new File("images\\Small_Heart_RightHalf.png"));
             leftHeart = ImageIO.read(new File("images\\Small_Heart_ActLeftOutline.png"));
