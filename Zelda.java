@@ -137,11 +137,11 @@ public class Zelda {
             ydimKI = 2;
             // this 2D vector keeps all the diff images of KI
 
-            backgroundKI = new BufferedImage[xdimKI][ydimKI];
+            backgroundKI = new BufferedImage[ydimKI][xdimKI];
             backgroundKI[0][0] = ImageIO.read(new File("images\\KI0000.png"));
-            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0100.png"));
-            backgroundKI[2][0] = ImageIO.read(new File("images\\KI0200.png"));
-            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0001.png"));
+            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0100.png"));
+            backgroundKI[0][2] = ImageIO.read(new File("images\\KI0200.png"));
+            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0001.png"));
             backgroundKI[1][1] = ImageIO.read(new File("images\\KI0101.png"));
 
             // Link's images
@@ -256,10 +256,14 @@ public class Zelda {
             bubblebossEnemies = new Vector<ImageObject>();
 
             // Health images
-            leftHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Left.png"));
-            rightHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Right.png"));
-            leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
-            rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
+            // leftHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Left.png"));
+            // rightHeartOutline = ImageIO.read(new File("images\\Heart_Outline_Right.png"));
+            // leftHeart = ImageIO.read(new File("images\\Heart_Left.png"));
+            // rightHeart = ImageIO.read(new File("images\\Heart_Right.png"));
+            leftHeartOutline = ImageIO.read(new File("images\\Small_Heart_LeftHalf.png"));
+            rightHeartOutline = ImageIO.read(new File("images\\Small_Heart_RightHalf.png"));
+            leftHeart = ImageIO.read(new File("images\\Small_Heart_ActLeftOutline.png"));
+            rightHeart = ImageIO.read(new File("images\\Small_Heart_RightOutline.png"));
 
         } catch (IOException ioe) { }
 
@@ -303,7 +307,7 @@ public class Zelda {
 
         try {
             if (backgroundState.substring(0, 2).equals("KI")) {
-                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("audio\\KI.wav").getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream(new File("audio\\TitleKI.wav").getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
@@ -795,21 +799,27 @@ public class Zelda {
         int halfinterioroffset = 1;
         for (int i = 0; i < p1.getMaxLife(); i++) {
             if (i % 2 == 0) {
-                g2D.drawImage(rotateImageObject(p1).filter(leftHeartOutline, null),
-                        leftscale * i + leftoffset + XOFFSET, YOFFSET, null);
+                g2D.drawImage(leftHeartOutline, leftscale * i + leftoffset + XOFFSET, YOFFSET, null);
+//                g2D.drawImage(rotateImageObject(p1).filter(leftHeartOutline, null),
+//                        leftscale * i + leftoffset + XOFFSET, YOFFSET, null);
             } else {
-                g2D.drawImage(rotateImageObject(p1).filter(rightHeartOutline, null),
-                        leftscale * i + rightoffset + XOFFSET, YOFFSET, null);
+                g2D.drawImage(rightHeartOutline, leftscale * i + rightoffset + XOFFSET, YOFFSET, null);
+//                g2D.drawImage(rotateImageObject(p1).filter(rightHeartOutline, null),
+//                        leftscale * i + rightoffset + XOFFSET, YOFFSET, null);
             }
         }
 
         for (int i = 0; i < p1.getLife(); i++) {
             if (i % 2 == 0) {
-                g2D.drawImage(rotateImageObject(p1).filter(leftHeart, null),
-                        leftscale * i + leftoffset + interioroffset + XOFFSET, interioroffset + YOFFSET, null);
+                g2D.drawImage(leftHeart, leftscale * i + leftoffset + interioroffset + XOFFSET,
+                        interioroffset + YOFFSET, null);
+//                g2D.drawImage(rotateImageObject(p1).filter(leftHeart, null),
+//                        leftscale * i + leftoffset + interioroffset + XOFFSET, interioroffset + YOFFSET, null);
             } else {
-                g2D.drawImage(rotateImageObject(p1).filter(rightHeart, null),
-                        leftscale * i + leftoffset - halfinterioroffset + XOFFSET, interioroffset + YOFFSET, null);
+                g2D.drawImage(rightHeart, leftscale * i + leftoffset - halfinterioroffset + XOFFSET,
+                        interioroffset + YOFFSET, null);
+//                g2D.drawImage(rotateImageObject(p1).filter(rightHeart, null),
+//                        leftscale * i + leftoffset - halfinterioroffset + XOFFSET, interioroffset + YOFFSET, null);
             }
         }
     }
