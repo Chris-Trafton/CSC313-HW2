@@ -137,11 +137,11 @@ public class Zelda {
             ydimKI = 2;
             // this 2D vector keeps all the diff images of KI
 
-            backgroundKI = new BufferedImage[xdimKI][ydimKI];
+            backgroundKI = new BufferedImage[ydimKI][xdimKI];
             backgroundKI[0][0] = ImageIO.read(new File("images\\KI0000.png"));
-            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0100.png"));
-            backgroundKI[2][0] = ImageIO.read(new File("images\\KI0200.png"));
-            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0001.png"));
+            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0100.png"));
+            backgroundKI[0][2] = ImageIO.read(new File("images\\KI0200.png"));
+            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0001.png"));
             backgroundKI[1][1] = ImageIO.read(new File("images\\KI0101.png"));
 
             // Link's images
@@ -150,44 +150,24 @@ public class Zelda {
                     ImageIO.read(new File("images\\Orange4.png")), ImageIO.read(new File("images\\Orange5.png")),
                     ImageIO.read(new File("images\\Orange6.png")), ImageIO.read(new File("images\\Orange7.png"))};
 
-//            backgroundKI[2][1] = ImageIO.read(new File("KI0201.png"));
-
             // setting up the Koholint Island walls and their collisions
-//            wallsKI = new Vector<Vector<Vector<ImageObject>>>(); // diff version of ImageObj than Asteroids
-//            for (int i = 0; i < ydimKI; i++) {
-//                Vector<Vector<ImageObject>> temp = new Vector<Vector<ImageObject>>();
-//                for (int j = 0; j < xdimKI; j++) {
-//                    Vector<ImageObject> tempWalls = new Vector<ImageObject>();
-//                    temp.addElement(tempWalls);
-//                }
-//                wallsKI.add(temp);
-//            }
-//
-//            for (int i = 0; i < wallsKI.size(); i++) {
-//                for (int j = 0; j < wallsKI.elementAt(i).size(); j++) {
-//                    if (i == 5 && j == 10) {
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(270, 35, 68, 70, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(100, 100, 200, 35, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(100, 135, 35, 35, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 165, 35, 135, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(100, 200, 35, 100, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(135, 270, 200, 35, 0.0));
-//
-//                    }
-//
-//                    if (i == 8 && j == 9) {
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 35, 135, 35, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(100, 70, 35, 140, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(35, 135, 35, 100, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 170, 35, 70, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 235, 35, 70, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 270, 135, 35, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(170, 270, 135, 35, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(300, 35, 35, 270, 0.0));
-//                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(235, 35, 70, 35, 0.0));
-//                    }
-//                }
-//            }
+            wallsKI = new Vector<Vector<Vector<ImageObject>>>(); // diff version of ImageObj than Asteroids
+            for (int i = 0; i < ydimKI; i++) {
+                Vector<Vector<ImageObject>> temp = new Vector<Vector<ImageObject>>();
+                for (int j = 0; j < xdimKI; j++) {
+                    Vector<ImageObject> tempWalls = new Vector<ImageObject>();
+                    temp.addElement(tempWalls);
+                }
+                wallsKI.add(temp);
+            }
+
+            for (int i = 0; i < wallsKI.size(); i++) {
+                for (int j = 0; j < wallsKI.elementAt(i).size(); j++) {
+                    if (i == 0 && j == 0) {
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 100, 100, 0.0));
+                    }
+                }
+            }
 //
             // setting up the Tail Cave images
 //            xdimTC = 9; // 7; // TODO: need to be able to just use 7 and 6, not 9 and 8
@@ -684,7 +664,7 @@ public class Zelda {
             int j = Integer.parseInt(backgroundState.substring(2, 4));
             if (i < 3) {
                 if (j < 2) {
-                    g2D.drawImage(backgroundKI[i][j], XOFFSET, YOFFSET, null);
+                    g2D.drawImage(backgroundKI[j][i], XOFFSET, YOFFSET, null);
                 }
             }
         }
