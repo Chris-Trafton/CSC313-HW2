@@ -137,11 +137,11 @@ public class Zelda {
             ydimKI = 2;
             // this 2D vector keeps all the diff images of KI
 
-            backgroundKI = new BufferedImage[ydimKI][xdimKI];
+            backgroundKI = new BufferedImage[xdimKI][ydimKI];
             backgroundKI[0][0] = ImageIO.read(new File("images\\KI0000.png"));
-            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0100.png"));
-            backgroundKI[0][2] = ImageIO.read(new File("images\\KI0200.png"));
-            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0001.png"));
+            backgroundKI[1][0] = ImageIO.read(new File("images\\KI0100.png"));
+            backgroundKI[2][0] = ImageIO.read(new File("images\\KI0200.png"));
+            backgroundKI[0][1] = ImageIO.read(new File("images\\KI0001.png"));
             backgroundKI[1][1] = ImageIO.read(new File("images\\KI0101.png"));
 
             // Link's images
