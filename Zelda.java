@@ -34,7 +34,8 @@ public class Zelda {
     private static Boolean endgame;
 
     private static BufferedImage[][] backgroundKI;
-    private static Vector<Vector<BufferedImage>> backgroundTC;
+    private static BufferedImage[][] backgroundTC;
+//    private static Vector<Vector<BufferedImage>> backgroundTC;
 
     private static Vector<Vector<Vector<ImageObject>>> wallsKI;
     private static Vector<Vector<Vector<ImageObject>>> wallsTC;
@@ -109,6 +110,8 @@ public class Zelda {
 
     // pgs 109-115
     public static void setup() {
+        // TODO: get rid of print stmt later
+        System.out.println("Made it to setup");
         appFrame = new JFrame("The Legend of Zelda: Link's Awakening");
         XOFFSET = 0;
         YOFFSET = 30;
@@ -136,7 +139,6 @@ public class Zelda {
             xdimKI = 3;
             ydimKI = 2;
             // this 2D vector keeps all the diff images of KI
-
             backgroundKI = new BufferedImage[xdimKI][ydimKI];
             backgroundKI[0][0] = ImageIO.read(new File("images\\KI0000.png"));
             backgroundKI[1][0] = ImageIO.read(new File("images\\KI0100.png"));
@@ -177,8 +179,19 @@ public class Zelda {
                     }
                 }
             }
-//
+
             // setting up the Tail Cave images
+            xdimTC = 3;
+            ydimTC = 2;
+            backgroundTC = new BufferedImage[xdimTC][ydimTC];
+            backgroundTC[0][0] = ImageIO.read(new File("images\\TC0101.png"));
+            backgroundTC[1][0] = ImageIO.read(new File("images\\TC0102.png"));
+            backgroundTC[2][0] = ImageIO.read(new File("images\\TC0103.png"));
+            backgroundTC[0][1] = ImageIO.read(new File("images\\TC0203.png"));
+            backgroundTC[1][1] = ImageIO.read(new File("images\\TC0303.png"));
+
+            // TODO: get rid of later
+            System.out.println("initialized TC background images");
 //            xdimTC = 9; // 7; // TODO: need to be able to just use 7 and 6, not 9 and 8
 //            ydimTC = 8; // 6;
 //            backgroundTC = new Vector<Vector<BufferedImage>>();
@@ -217,15 +230,32 @@ public class Zelda {
 //            }
 //
             // setting up the Tail Cave walls
-//            wallsTC = new Vector<Vector<Vector<ImageObject>>>();
-//            for (int i = 0; i < ydimTC; i++) {
-//                Vector<Vector<ImageObject>> temp = new Vector<Vector<ImageObject>>();
-//                for (int j = 0; j < xdimTC; j++) {
-//                    Vector<ImageObject> tempWalls = new Vector<ImageObject>();
-//                    temp.addElement(tempWalls);
-//                }
-//                wallsTC.add(temp);
-//            }
+            wallsTC = new Vector<Vector<Vector<ImageObject>>>();
+            for (int i = 0; i < ydimTC; i++) {
+                Vector<Vector<ImageObject>> temp = new Vector<Vector<ImageObject>>();
+                for (int j = 0; j < xdimTC; j++) {
+                    Vector<ImageObject> tempWalls = new Vector<ImageObject>();
+                    temp.addElement(tempWalls);
+                }
+                wallsTC.add(temp);
+            }
+
+            for (int i = 0; i < wallsTC.size(); i++) {
+                for (int j = 0; j < wallsTC.elementAt(i).size(); j++) {
+                    if (i == 0 && j == 0) {
+                        //338x271 window size
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 100, 400, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 400, 75, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(0, 260, 400, 100, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(270, 220, 400, 400, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(100, 75, 25, 100, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(270, 0, 100, 180, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(240, 75, 100, 100, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(200, 130, 100, 50, 0.0));
+                        wallsTC.elementAt(i).elementAt(j).addElement(new ImageObject(100, 130, 60, 50, 0.0));
+                    }
+                }
+            }
 
             player = ImageIO.read(new File("images\\Orange0.png"));
 
@@ -573,7 +603,7 @@ public class Zelda {
                 // check player against doors in given scenes
 //                if (backgroundState.substring(0, 6).equals("KI0511")) {
 //                    if (Zelda.GameLevel.collisionOccurs(p1, doorKItoTC)) {
-//                        p1.moveto(p1originalX, p1originalY);
+//                        p1.moveto(p1originalX, p1originalY);4
 //                        backgroundState = "TC0305";
 //                        clip.stop();
 //                        playAudio(backgroundState);
@@ -586,6 +616,23 @@ public class Zelda {
 //                        playAudio(backgroundState);
 //                    }
 //                }
+
+                // check player against doors in given scenes
+                if (backgroundState.substring(0, 6).equals("KI0101")) {
+                    if (Zelda.GameLevel.collisionOccurs(p1, doorKItoTC)) {
+                        p1.moveto(p1originalX, p1originalY);
+                        backgroundState = "TC0101";
+                        clip.stop();
+                        playAudio(backgroundState);
+                    }
+                } else if (backgroundState.substring(0, 6).equals("TC0101")) {
+                    if (Zelda.GameLevel.collisionOccurs(p1, doorTCtoKI)) {
+                        p1.moveto(p1originalX, p1originalY);
+                        backgroundState = "KI0101";
+                        clip.stop();
+                        playAudio(backgroundState);
+                    }
+                }
 
                 // check player and enemies against walls
                 if (backgroundState.substring(0, 6).equals("KI0000")) {
@@ -680,13 +727,18 @@ public class Zelda {
         }
 
         if (backgroundState.substring(0, 2).equals("TC")) {
-            int i = Integer.parseInt(backgroundState.substring(4, 6));
-            int j = Integer.parseInt(backgroundState.substring(2, 4));
-            if (i < backgroundTC.size()) {
-                if (j < backgroundTC.elementAt(i).size()) {
-                    g2D.drawImage(backgroundTC.elementAt(i).elementAt(j), XOFFSET, YOFFSET, null);
+            int i = Integer.parseInt(backgroundState.substring(4, 6)) - 1;
+            int j = Integer.parseInt(backgroundState.substring(2, 4)) - 1;
+            if (i < 3) {
+                if (j < 2) {
+                    g2D.drawImage(backgroundTC[j][i], XOFFSET, YOFFSET, null);
                 }
             }
+//            if (i < backgroundTC.length) {
+//                if (j < backgroundTC[i].length) {
+//                    g2D.drawImage(backgroundTC[i][j], XOFFSET, YOFFSET, null);
+//                }
+//            }
         }
     }
 
@@ -964,7 +1016,7 @@ public class Zelda {
             p1.setLife(6);
             p1.setMaxLife(6);
             doorKItoTC = new ImageObject(200, 55, 35, 35, 0.0);
-            doorTCtoKI = new ImageObject(150, 270, 35, 35, 0.0);
+            doorTCtoKI = new ImageObject(200, WINHEIGHT + YOFFSET, 35, 35, 0.0);
 
             try {
                 Thread.sleep(50);
