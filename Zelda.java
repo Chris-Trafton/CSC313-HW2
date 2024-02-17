@@ -164,7 +164,16 @@ public class Zelda {
             for (int i = 0; i < wallsKI.size(); i++) {
                 for (int j = 0; j < wallsKI.elementAt(i).size(); j++) {
                     if (i == 0 && j == 0) {
-                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 100, 100, 0.0));
+                        //338x271 window size
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 100, 400, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 400, 75, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 260, 400, 100, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(270, 220, 400, 400, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(100, 75, 25, 100, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(270, 0, 100, 180, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(240, 75, 100, 100, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(200, 130, 100, 50, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(100, 130, 60, 50, 0.0));
                     }
                 }
             }
@@ -562,28 +571,25 @@ public class Zelda {
             // Random randomNumbers = new Random(LocalTime.now().getNano());
             while (endgame == false) {
                 // check player against doors in given scenes
-                if (backgroundState.substring(0, 6).equals("KI0511")) {
-                    if (Zelda.GameLevel.collisionOccurs(p1, doorKItoTC)) {
-                        p1.moveto(p1originalX, p1originalY);
-                        backgroundState = "TC0305";
-                        clip.stop();
-                        playAudio(backgroundState);
-                    }
-                } else if (backgroundState.substring(0, 6).equals("TC0305")) {
-                    if (Zelda.GameLevel.collisionOccurs(p1, doorTCtoKI)) {
-                        p1.moveto(p1originalX, p1originalY);
-                        backgroundState = "KI0511";
-                        clip.stop();
-                        playAudio(backgroundState);
-                    }
-                }
+//                if (backgroundState.substring(0, 6).equals("KI0511")) {
+//                    if (Zelda.GameLevel.collisionOccurs(p1, doorKItoTC)) {
+//                        p1.moveto(p1originalX, p1originalY);
+//                        backgroundState = "TC0305";
+//                        clip.stop();
+//                        playAudio(backgroundState);
+//                    }
+//                } else if (backgroundState.substring(0, 6).equals("TC0305")) {
+//                    if (Zelda.GameLevel.collisionOccurs(p1, doorTCtoKI)) {
+//                        p1.moveto(p1originalX, p1originalY);
+//                        backgroundState = "KI0511";
+//                        clip.stop();
+//                        playAudio(backgroundState);
+//                    }
+//                }
 
                 // check player and enemies against walls
-                if (backgroundState.substring(0, 6).equals("KI0510")) {
-                    checkMoversAgainstWalls(wallsKI.elementAt(5).elementAt(10));
-                }
-                if (backgroundState.substring(0, 6).equals("K10809")) {
-                    checkMoversAgainstWalls(wallsKI.elementAt(8).elementAt(9));
+                if (backgroundState.substring(0, 6).equals("KI0000")) {
+                    checkMoversAgainstWalls(wallsKI.elementAt(0).elementAt(0));
                 }
 
                 // check player against enemies
@@ -1075,7 +1081,7 @@ public class Zelda {
                     obj2.getY() + obj2.getHeight()) == true) {
                 ret = true;
             }
-            return true;
+            return ret;
         }
 
     }
